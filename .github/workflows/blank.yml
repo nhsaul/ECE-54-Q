@@ -10,7 +10,7 @@ struct Joueur {
 char plateau[17][17];
 struct Joueur joueurs[4];
 int nombre_joueurs=0;
-int joueur_actuel = 0;
+int joueur_actuel  = 0;
 
 
 void initialiser_plateau() {
