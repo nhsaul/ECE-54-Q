@@ -56,7 +56,7 @@ void afficher_plateau() {
 
 void initialiser_joueurs() {
     while(nombre_joueurs != 4 && nombre_joueurs != 2){
-        printf("Entrez le nombre de joueurs (2 ou 4):\n");
+        printf("Entrez le nombe de joueurs (2 ou 4):\n");
         scanf("%d", &nombre_joueurs);
     }
 
