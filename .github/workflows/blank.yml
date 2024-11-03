@@ -39,4 +39,33 @@ void initialiser_plateau() {
         joueurs[3].x = 8; joueurs[3].y = 16;
     }
 }
+void afficher_plateau() {
+    printf("\n     "); 
+    for (int j = 0; j < 17; j++) {
+        printf("%2d ", j); 
+    }
+    printf("\n");
+
+    for (int i = 0; i < 17; i++) {
+        printf("%2d   ", i); 
+        for (int j = 0; j < 17; j++) {
+            printf(" %c ", plateau[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+
+void initialiser_joueurs() {
+    while(nombre_joueurs != 4 && nombre_joueurs != 2){
+        printf("Entrez le nombre de joueurs (2 ou 4): ");
+        scanf("%d", &nombre_joueurs);
+    }
+
+    for (int i = 0; i < nombre_joueurs; i++) {
+        printf("Entrez le nom du Joueur %d: ", i + 1);
+        scanf("%s", joueurs[i].nom);
+        joueurs[i].barrieres_restantes = 20/nombre_joueurs;
+    }
+}
 
