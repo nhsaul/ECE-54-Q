@@ -72,7 +72,7 @@ int x, y;
 int deplacement_valide = 0;
 
 while (!deplacement_valide) {
-printf("donner les coordonées %s (ligne col): ", joueur->nom);
+printf("donner les coodonées %s (ligne col): ", joueur->nom);
 scanf("%d %d", &x, &y);
 
 
