@@ -122,3 +122,63 @@ printf("Position  invalide! Essayez à nouveau.\n");
 printf("Vous n'avez plus de barrières \n");
 }
 }
+
+int verifier_victoire() {
+    if (joueurs[0].x == 16) {
+        printf("%s a gagne!\n", joueurs[0].nom);
+        return 1;
+    }
+    if (joueurs[1].x == 0) {
+        printf("%s a gagne!\n", joueurs[1].nom);
+        return 1;
+    }
+    if (nombre_joueurs == 4) {
+        if (joueurs[2].y == 16) {
+            printf("%s a gagne!\n", joueurs[2].nom);
+            return 1;
+        }
+        if (joueurs[3].y == 0) {
+            printf("%s a gagné!\n", joueurs[3].nom);
+            return 1;
+        }
+    }
+    return 0;
+}
+
+void tour_de_jeu() {
+    struct Joueur *joueur = &joueurs[joueur_actuel];
+    int choix;
+
+    printf("\nTour de %s (Barrieres restantes : %d)\n1. Deplacer le pion\n2. Poser une barriere\n",
+           joueur->nom, joueur->barrieres_restantes);
+    scanf("%d", &choix);
+
+    if (choix == 1) {
+        deplacer_pion(joueur, joueur_actuel);
+    } else if (choix == 2) {
+        poser_barriere(joueur);
+    } else {
+        printf("Choix invalide!\n");
+    }
+}
+
+void menu() {
+    initialiser_joueurs();
+    initialiser_plateau();
+
+    while (1) {
+        afficher_plateau();
+        tour_de_jeu();
+
+        if (verifier_victoire())
+            break;
+
+        joueur_actuel = (joueur_actuel + 1) % nombre_joueurs;
+    }
+}
+
+int main() {
+    menu();
+    return 0;
+}
+[![.github/workflows/blank.yml](https://github.com/nhsaul/ECE-54-Q/actions/workflows/blank.yml/badge.svg)](https://github.com/nhsaul/ECE-54-Q/actions/workflows/blank.yml)
